@@ -1,0 +1,34 @@
+@keyframes hideSidebar {
+  from {
+    width: var(--sidebar-width);
+  }
+  to {
+    @apply w-[3.7rem];
+  }
+}
+
+@keyframes showSidebar {
+  from {
+    @apply w-[3.7rem];
+  }
+  to {
+    transform: translateX(0);
+    width: var(--sidebar-width);
+  }
+}
+
+.hidedSidebar {
+  > aside {
+    animation: hideSidebar .35s forwards;
+  }
+
+  > div {
+    @apply w-full;
+  }
+}
+
+.showedSidebar {
+  > aside {
+    animation: showSidebar .3s forwards;
+  }
+}

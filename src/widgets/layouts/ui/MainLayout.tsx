@@ -1,15 +1,15 @@
 import React, { FC, PropsWithChildren } from 'react'
 
-import Header from './ui/Header'
-import Sidebar from './ui/Sidebar'
+import Header from './Header'
+import Sidebar from './sidebar/Sidebar'
 
 const MainLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
-		<main>
+		<main className={'min-h-screen flex'}>
 			<Sidebar />
-			<div>
+			<div style={{ flex: '1 1 0%' }}>
 				<Header />
-				{children}
+				<section className='p-layout'>{children}</section>
 			</div>
 		</main>
 	)
