@@ -3,8 +3,6 @@ class PublicRoutes {
 	TRENDING = '/trends'
 	VIDEO_GAMES = '/video-games'
 
-	SEARCH = '/'
-
 	MY_CHANNEL = '/my-channel'
 	SUBSCRIPTIONS = '/subscriptions'
 	HISTORY = '/history'
@@ -12,6 +10,18 @@ class PublicRoutes {
 
 	SETTINGS = '/settings'
 	FEEDBACK = '/feedback'
+
+	VIDEO(path: string) {
+		return `/v/${path}`
+	}
+
+	CHANNEL(path: string) {
+		return `/c/${path}`
+	}
+
+	SEARCH(searchTerm: string) {
+		return `/s?searchTerm=${searchTerm}`
+	}
 }
 
-export const PUBLIC_PAGE = new PublicRoutes()
+export const PAGE = new PublicRoutes()

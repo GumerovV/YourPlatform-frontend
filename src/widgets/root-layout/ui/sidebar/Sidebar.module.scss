@@ -1,0 +1,33 @@
+.sidebar {
+  @apply w-60 p-layout border-r border-border;
+}
+
+.title {
+  @apply opacity-45 uppercase text-xs mb-3;
+}
+
+.item_link {
+  @apply flex items-center gap-5 py-2 px-2 hover:bg-bgHover rounded-lg transition-colors duration-0;
+}
+
+.item_info {
+  @apply flex items-center gap-5;
+}
+
+.item_active {
+  @apply bg-bgHover;
+}
+
+.item_icon {
+  @apply group-hover:text-primary group-hover:rotate-6 transition-all;
+}
+
+.item_iconActive {
+  @apply text-primary;
+}
+
+.item_borderBottom {
+  @apply w-full block h-[1px] bg-border my-5;
+}
+
+

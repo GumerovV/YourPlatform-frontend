@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Noto_Sans } from 'next/font/google'
 
-import { MainLayout } from '@/widgets/layouts'
+import Providers from '@/app/providers/Providers'
 
 import './globals.scss'
 
@@ -11,7 +11,7 @@ const notoSans = Noto_Sans({
 })
 
 export const metadata: Metadata = {
-	title: 'iVideo',
+	title: { absolute: 'YourPlatform', template: '%s | YourPlatform' },
 	description: 'Best app for video watching',
 }
 
@@ -26,7 +26,7 @@ export default function RootLayout({
 				className={`${notoSans.variable} antialiased`}
 				suppressHydrationWarning
 			>
-				<MainLayout>{children}</MainLayout>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	)

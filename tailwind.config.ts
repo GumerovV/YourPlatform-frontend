@@ -6,7 +6,10 @@ const config: Config = {
 	content: ['./src/**/*.{html,ts,tsx}'],
 	theme: {
 		extend: {
-			colors: COLORS,
+			colors: {
+				bgModal: '#171717',
+				...COLORS,
+			},
 			padding: {
 				layout: '1.2rem',
 			},
