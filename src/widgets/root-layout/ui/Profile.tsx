@@ -5,7 +5,7 @@ import React from 'react'
 import { useTypeSelector } from '@/shared/lib/hooks/redux'
 import UiButton from '@/shared/ui/ui-button'
 
-import { HeaderProfile } from '@/features/profile'
+import { HeaderProfile } from '@/features/profile/profile-menu'
 
 const Profile = () => {
 	const isAuth = useTypeSelector(state => state.auth.isAuth)

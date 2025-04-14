@@ -6,7 +6,7 @@ import UiSkeletonLoader from '@/shared/ui/ui-skeleton-loader'
 
 import { useProfile } from '@/entities/user/model/useProfile'
 
-import MenuHeading from '@/features/profile/ui/MenuHeading'
+import MenuHeading from '@/features/profile/profile-menu/ui/MenuHeading'
 
 import Menu from './Menu'
 
@@ -18,7 +18,6 @@ const HeaderProfile = () => {
 
 	return (
 		<>
-			{/*<UiAvatar channel={profile?.channel} />*/}
 			<UiModal
 				isOpen={isOpen}
 				variant='options'

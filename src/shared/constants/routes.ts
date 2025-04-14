@@ -1,4 +1,6 @@
 class PublicRoutes {
+	AUTH = '/auth'
+
 	HOME = '/'
 	TRENDING = '/trends'
 	VIDEO_GAMES = '/video-games'
