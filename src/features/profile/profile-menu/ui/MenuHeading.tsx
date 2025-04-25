@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
+import { PAGE } from '@/shared/constants/routes'
 import { IUser } from '@/shared/types/user.types'
 import UiAvatar from '@/shared/ui/ui-avatar'
 
@@ -10,11 +11,11 @@ const MenuHeading = ({ profile }: { profile: IUser }) => {
 			<div className='h-10 w-10'>
 				<UiAvatar channel={profile.channel} />
 			</div>
-			<div>
+			<div className='overflow-hidden'>
 				<div>{profile?.name ?? 'Неизвестное имя'}</div>
 				<div>{profile?.email}</div>
 				<Link
-					href={profile.channel?.id || ''}
+					href={PAGE.CHANNEL(profile?.channel?.slug || '')}
 					className='mt-1 text-sm text-blue-500'
 				>
 					Посмотреть канал

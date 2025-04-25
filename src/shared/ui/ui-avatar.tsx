@@ -6,19 +6,20 @@ import { IChannel } from '@/shared/types/channel.types'
 
 interface Props {
 	channel?: IChannel
+	size?: number
 }
 
-const UiAvatar = ({ channel }: Props) => {
+const UiAvatar = ({ channel, size = 40 }: Props) => {
 	return channel?.avatarUrl ? (
 		<Image
 			alt={channel.slug}
 			src={channel.avatarUrl}
-			width={40}
-			height={40}
-			className='rounded-full object-cover cursor-pointer'
+			width={size}
+			height={size}
+			className='rounded-full flex-shrink-0 object-cover cursor-pointer'
 		/>
 	) : (
-		<FaUserCircle size={40} className='text-white/30 cursor-pointer' />
+		<FaUserCircle size={size} className='text-white/30 cursor-pointer' />
 	)
 }
 

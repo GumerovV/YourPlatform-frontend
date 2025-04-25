@@ -1,28 +1,43 @@
-import clsx from 'clsx'
-import React, { TextareaHTMLAttributes } from 'react'
+import React, { TextareaHTMLAttributes, useId } from 'react'
 import { UseFormRegisterReturn } from 'react-hook-form'
+import { twMerge } from 'tailwind-merge'
 
 interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-	label: string
+	label?: string
 	error?: string
 	registration?: UseFormRegisterReturn
 }
 
-const UiTextarea = ({ label, error, registration, ...rest }: Props) => {
+const UiTextarea = ({
+	label,
+	error,
+	registration,
+	className,
+	...rest
+}: Props) => {
+	const id = useId()
+
 	return (
-		<div className='mb-4'>
-			<label>
-				<span className='block text-gray-400 font-semibold mb-2'>{label}</span>
-				<textarea
-					className={clsx(
-						'w-full px-3 py-2 bg-transparent border rounded shadow-sm transition-colors' +
-							' focus:outline-none focus:ring-0 focus:border-gray-400 resize-none',
-						error ? 'border-red-500' : 'border-border',
-					)}
-					{...registration}
-					{...rest}
-				/>
-			</label>
+		<div className=''>
+			{!!label && (
+				<label htmlFor={id}>
+					<span className='block text-gray-400 font-semibold mb-2'>
+						{label}
+					</span>
+				</label>
+			)}
+			<textarea
+				id={id}
+				className={twMerge(
+					'w-full px-3 py-2 bg-transparent border rounded shadow-sm transition-colors' +
+						' focus:outline-none focus:ring-0 focus:border-gray-400 resize-none',
+					error ? 'border-red-500' : 'border-border',
+					className,
+				)}
+				{...registration}
+				{...rest}
+			/>
+
 			{error && <p className='text-red-500 text-sm mt-1'>{error}</p>}
 		</div>
 	)

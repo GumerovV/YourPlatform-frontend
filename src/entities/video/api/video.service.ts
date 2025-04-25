@@ -1,5 +1,9 @@
 import { axiosClassic } from '@/shared/api/axios-instance'
-import type { IVideo, IVideosResponse } from '@/shared/types/video.types'
+import type {
+	IVideo,
+	IVideoResponse,
+	IVideosResponse,
+} from '@/shared/types/video.types'
 
 class VideoService {
 	private _VIDEOS = '/videos'
@@ -12,6 +16,13 @@ class VideoService {
 						params: { searchTerm },
 					}
 				: {},
+		)
+		return response.data
+	}
+
+	async getByPublicId(id: string) {
+		const response = await axiosClassic.get<IVideoResponse>(
+			`${this._VIDEOS}/by-publicId/${id}`,
 		)
 		return response.data
 	}

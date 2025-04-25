@@ -48,12 +48,12 @@ export function useAuthForm(
 
 				return 'Успешный вход в систему'
 			},
-			// @ts-ignore
-			error: e => {
+			error: (e: any) => {
 				if (axios.isAxiosError(e)) {
 					dispatch(clearAuthData())
 					return toast.error(errorCatch(e))
 				}
+				return 'Произошла ошибка'
 			},
 		})
 	}

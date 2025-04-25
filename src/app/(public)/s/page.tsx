@@ -2,18 +2,18 @@ import { Metadata } from 'next'
 
 import { NO_INDEX_PAGE } from '@/shared/constants/seo.constants'
 
-import { SearchPage } from '@/pages/search'
+import SearchPage from '@/pages1/search'
 
 type Props = {
-	searchParams: {
-		searchTerm?: string
-	}
+	searchTerm?: string
 }
 
 export async function generateMetadata({
-	searchParams,
-}: Props): Promise<Metadata> {
-	const searchTerm = searchParams.searchTerm || ''
+	params,
+}: {
+	params: Promise<Props>
+}): Promise<Metadata> {
+	const { searchTerm } = await params
 	return {
 		title: `${searchTerm}`,
 		...NO_INDEX_PAGE,
@@ -21,7 +21,7 @@ export async function generateMetadata({
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const SPage = ({ searchParams }: Props) => {
+const SPage = async ({ params }: { params: Promise<Props> }) => {
 	return <SearchPage />
 }
 

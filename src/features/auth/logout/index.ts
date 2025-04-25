@@ -1,1 +1,1 @@
-export { LogoutButton } from './ui/LogoutButton'
+export { default as LogoutButton } from './ui/LogoutButton'

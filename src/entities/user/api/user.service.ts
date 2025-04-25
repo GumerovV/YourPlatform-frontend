@@ -18,6 +18,13 @@ class UserService {
 		)
 		return response.data
 	}
+
+	async toggleLike(videoId: string) {
+		const response = await axiosAuth.put(`${this._USERS}/profile/likes`, {
+			videoId,
+		})
+		return response.data
+	}
 }
 
 export const userService = new UserService()

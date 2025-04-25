@@ -5,11 +5,12 @@ import React from 'react'
 
 import { PAGE } from '@/shared/constants/routes'
 import { formatDate } from '@/shared/lib/utils/format-date'
-import { formatViews } from '@/shared/lib/utils/format-views'
+import { formatCount } from '@/shared/lib/utils/format-views'
 import UiAvatar from '@/shared/ui/ui-avatar'
 import UiTooltip from '@/shared/ui/ui-tooltip'
+import UiVerified from '@/shared/ui/ui-verified'
 
-import { IVideoItem } from '@/entities/video/model/types'
+import { IVideoItem } from '.././model/types'
 
 const VideoItem = ({ video, Icon }: IVideoItem) => {
 	return (
@@ -28,7 +29,7 @@ const VideoItem = ({ video, Icon }: IVideoItem) => {
 			</div>
 			<div className='flex flex-auto'>
 				<div className='w-10 mt-2 mr-4'>
-					<Link href={video.channel.slug}>
+					<Link href={PAGE.CHANNEL(video.channel.slug)}>
 						<UiAvatar channel={video.channel} />
 					</Link>
 				</div>
@@ -44,22 +45,10 @@ const VideoItem = ({ video, Icon }: IVideoItem) => {
 							<UiTooltip text={video.channel.slug} position='top'>
 								<span>{video.channel.slug}</span>
 							</UiTooltip>
-							{video.channel.isVerified && (
-								<div className='bg-white/20 rounded-full p-[1px] inline-flex items-center justify-center'>
-									<svg
-										xmlns='http://www.w3.org/2000/svg'
-										width='10'
-										height='10'
-										viewBox='0 0 24 24'
-										fill='white'
-									>
-										<path d='M9 16.2l-3.5-3.5L4 14.2l5 5 12-12-1.5-1.5z' />
-									</svg>
-								</div>
-							)}
+							{video.channel.isVerified && <UiVerified />}
 						</div>
 						<div className='flex items-center text-nowrap text-sm text-white/50 space-x-1'>
-							<span>{formatViews(video.viewsCount)}</span>
+							<span>{formatCount(video.viewsCount)} показов</span>
 							<span>•</span>
 							<span>{formatDate(video.createdAt)}</span>
 							{Icon && <Icon size={15} className='text-red-700' />}

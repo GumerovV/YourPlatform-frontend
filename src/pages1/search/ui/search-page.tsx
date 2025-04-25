@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import { videoService } from '@/entities/video/api/video.service'
 
@@ -35,4 +35,12 @@ const SearchPage = () => {
 	)
 }
 
-export default SearchPage
+function SearchPageSuspense() {
+	return (
+		<Suspense>
+			<SearchPage />
+		</Suspense>
+	)
+}
+
+export default SearchPageSuspense

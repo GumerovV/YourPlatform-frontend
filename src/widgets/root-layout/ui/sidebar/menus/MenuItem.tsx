@@ -20,6 +20,7 @@ const MenuItem = ({
 				className={clsx(styles.item_link, 'group', {
 					[styles.item_active]: isActive,
 				})}
+				title={item.label}
 			>
 				<item.icon
 					className={clsx(styles.item_icon, {

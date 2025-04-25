@@ -1,0 +1,29 @@
+.input {
+
+  &::-webkit-slider-thumb {
+    @apply w-3 h-3 rounded-full cursor-pointer bg-red-600;
+    appearance: none;
+  }
+
+  &::-moz-range-thumb {
+    @apply w-3 h-3 rounded-full cursor-pointer bg-red-600;
+    appearance: none;
+  }
+
+  &::-ms-thumb {
+    @apply w-3 h-3 rounded-full cursor-pointer bg-red-600;
+    appearance: none;
+  }
+
+  &:hover::-webkit-slider-thumb {
+    transform: scale(1.2);
+  }
+
+  &:hover::-moz-range-thumb {
+    transform: scale(1.2);
+  }
+
+  &:hover::-ms-thumb {
+    transform: scale(1.2);
+  }
+}

@@ -6,8 +6,10 @@ import {
 	Gamepad2Icon,
 	HistoryIcon,
 	HomeIcon,
+	LayoutGridIcon,
 	SettingsIcon,
 	TvMinimalPlayIcon,
+	UploadIcon,
 } from 'lucide-react'
 
 import { PAGE } from '@/shared/constants/routes'
@@ -57,13 +59,27 @@ export const SIDEBAR_DATA: ISidebarItem[] = [
 
 export const MORE_SIDEBAR_DATA: ISidebarItem[] = [
 	{
-		icon: SettingsIcon,
-		label: 'Настройки',
-		link: STUDIO_PAGE.SETTINGS,
-	},
-	{
 		icon: CircleAlertIcon,
 		label: 'Обратная связь',
 		link: PAGE.FEEDBACK,
+	},
+]
+
+export const STUDIO_SIDEBAR_DATA: ISidebarItem[] = [
+	{
+		icon: LayoutGridIcon,
+		label: 'Студия',
+		link: STUDIO_PAGE.HOME,
+	},
+	{
+		icon: UploadIcon,
+		label: 'Загрузить видео',
+		link: STUDIO_PAGE.UPLOAD_VIDEO,
+	},
+	{
+		icon: SettingsIcon,
+		label: 'Настройки',
+		link: STUDIO_PAGE.SETTINGS,
+		isBorderBottom: true,
 	},
 ]
