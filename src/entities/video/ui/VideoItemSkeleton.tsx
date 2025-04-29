@@ -1,10 +1,11 @@
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 import UiSkeletonLoader from '@/shared/ui/ui-skeleton-loader'
 
-const VideoItemSkeleton = () => {
+const VideoItemSkeleton = ({ className }: { className?: string }) => {
 	return (
-		<div className='w-full h-full animate-pulse'>
+		<div className={twMerge('w-full h-full animate-pulse', className)}>
 			<UiSkeletonLoader classNames='h-40 mb-2 rounded-lg' />
 			<div className='flex flex-auto'>
 				<UiSkeletonLoader classNames='w-10 h-8 mt-2 mr-4 rounded-full' />

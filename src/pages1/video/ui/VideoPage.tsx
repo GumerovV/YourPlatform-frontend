@@ -18,12 +18,16 @@ import { LikeButton } from '@/features/video/like-button'
 
 import Comments from '@/widgets/comments/ui/Comments'
 
+import { useUpdateViews } from '@/pages1/video/lib/useUpdateViews'
+
 const VideoPage = ({ video }: { video: IVideoResponse }) => {
 	const [isTheaterMode, setIsTheaterMode] = useState<boolean>(false)
 
 	const toggleTheaterMode = () => {
 		setIsTheaterMode(!isTheaterMode)
 	}
+
+	useUpdateViews({ video })
 
 	return (
 		<section className='relative grid grid-cols-[4fr_1fr] gap-10'>
@@ -80,7 +84,10 @@ const VideoPage = ({ video }: { video: IVideoResponse }) => {
 			</div>
 			<div className={clsx('space-y-4', isTheaterMode && 'pt-[60rem]')}>
 				{video.similarVideos.map(simVideo => (
-					<VideoSimilarItem key={simVideo.publicId} video={simVideo} />
+					<VideoSimilarItem
+						key={simVideo.publicId}
+						item={{ video: simVideo }}
+					/>
 				))}
 			</div>
 		</section>

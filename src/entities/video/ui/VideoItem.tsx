@@ -28,7 +28,7 @@ const VideoItem = ({ video, Icon }: IVideoItem) => {
 				</Link>
 			</div>
 			<div className='flex flex-auto'>
-				<div className='w-10 mt-2 mr-4'>
+				<div className='w-10 mt-2 mr-4 flex-shrink-0'>
 					<Link href={PAGE.CHANNEL(video.channel.slug)}>
 						<UiAvatar channel={video.channel} />
 					</Link>

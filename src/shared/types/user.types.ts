@@ -15,5 +15,5 @@ export interface IUser extends IBase {
 
 interface IVideoLike extends IBase {
 	userId: string
-	videoId: string
+	video: IVideo
 }

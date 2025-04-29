@@ -47,6 +47,13 @@ class VideoService {
 		)
 		return response.data
 	}
+
+	async updateViews(publicId: string) {
+		const response = await axiosClassic.put(
+			`${this._VIDEOS}/update-views-count/${publicId}`,
+		)
+		return response.data
+	}
 }
 
 export const videoService = new VideoService()
