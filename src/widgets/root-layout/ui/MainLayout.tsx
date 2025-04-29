@@ -7,18 +7,18 @@ import { authService } from '@/entities/session/api/auth.service'
 import Header from './Header'
 import Sidebar from './sidebar/Sidebar'
 
+import styles from './RootLayout.module.scss'
+
 const MainLayout: FC<PropsWithChildren> = ({ children }) => {
 	useEffect(() => {
 		authService.initializeAuth()
 	}, [])
 
 	return (
-		<main className='min-h-screen flex'>
+		<main className={styles.layout}>
 			<Sidebar />
-			<div style={{ flex: '1 1 0%' }}>
-				<Header />
-				<section className='p-layout'>{children}</section>
-			</div>
+			<Header />
+			<section className='p-layout'>{children}</section>
 		</main>
 	)
 }

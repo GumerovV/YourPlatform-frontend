@@ -28,7 +28,7 @@ const SubscriptionsPage = () => {
 	return (
 		<section>
 			<UiHeading Icon={UsersIcon}>Мои подписки</UiHeading>
-			<div className='grid grid-cols-5 gap-5'>
+			<div className='grid grid-cols-5 gap-5 mb-7'>
 				{profile?.subscriptions.length ? (
 					profile?.subscriptions.map(sub => (
 						<div key={sub.id} className='flex items-center gap-2'>
