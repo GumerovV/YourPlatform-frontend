@@ -1,7 +1,6 @@
 'use client'
 
 import clsx from 'clsx'
-import { ListPlusIcon } from 'lucide-react'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
@@ -14,6 +13,7 @@ import UiCollapsibleBlock from '@/shared/ui/ui-collapsible-block'
 import { VideoPlayer, VideoSimilarItem } from '@/entities/video'
 
 import { SubscribeButton } from '@/features/channel/subscribe'
+import { AddToPlaylistButton } from '@/features/playlist/add-to-playlist'
 import { LikeButton } from '@/features/video/like-button'
 
 import Comments from '@/widgets/comments/ui/Comments'
@@ -56,10 +56,7 @@ const VideoPage = ({ video }: { video: IVideoResponse }) => {
 						</span>
 					</div>
 					<div className='flex items-center gap-5'>
-						<button className='flex gap-2'>
-							<ListPlusIcon />
-							Сохранить
-						</button>
+						<AddToPlaylistButton videoId={video.id} />
 						<LikeButton video={video} />
 					</div>
 				</div>

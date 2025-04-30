@@ -7,6 +7,7 @@ import {
 	HistoryIcon,
 	HomeIcon,
 	LayoutGridIcon,
+	ListVideoIcon,
 	SettingsIcon,
 	TvMinimalPlayIcon,
 	UploadIcon,
@@ -43,6 +44,11 @@ export const SIDEBAR_DATA: ISidebarItem[] = [
 		icon: CirclePlayIcon,
 		label: 'Подписки',
 		link: PAGE.SUBSCRIPTIONS,
+	},
+	{
+		icon: ListVideoIcon,
+		label: 'Плейлитсы',
+		link: PAGE.PLAYLISTS(),
 	},
 	{
 		icon: HistoryIcon,

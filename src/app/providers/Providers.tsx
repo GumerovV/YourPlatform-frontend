@@ -25,7 +25,7 @@ const Providers: FC<PropsWithChildren> = ({ children }) => {
 					position='bottom-right'
 					toastOptions={{
 						style: {
-							backgroundColor: COLORS.bgHover,
+							backgroundColor: COLORS.toast,
 							color: 'white',
 						},
 					}}

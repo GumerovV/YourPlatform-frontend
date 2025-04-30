@@ -24,6 +24,10 @@ class PublicRoutes {
 	SEARCH(searchTerm: string) {
 		return `/s?searchTerm=${searchTerm}`
 	}
+
+	PLAYLISTS(playlistId?: string) {
+		return `/playlists${playlistId ? `/${playlistId}` : ''}`
+	}
 }
 
 export const PAGE = new PublicRoutes()
