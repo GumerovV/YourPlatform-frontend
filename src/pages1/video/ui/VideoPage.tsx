@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
-import { ListPlusIcon } from 'lucide-react'
+import { ListPlusIcon, PlusIcon } from 'lucide-react'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
@@ -14,6 +14,8 @@ import UiCollapsibleBlock from '@/shared/ui/ui-collapsible-block'
 import { VideoPlayer, VideoSimilarItem } from '@/entities/video'
 
 import { SubscribeButton } from '@/features/channel/subscribe'
+import { AddToPlaylistButton } from '@/features/playlist/add-to-playlist'
+import { CreatePlaylistButton } from '@/features/playlist/create-new-playlist'
 import { LikeButton } from '@/features/video/like-button'
 
 import Comments from '@/widgets/comments/ui/Comments'
@@ -52,14 +54,29 @@ const VideoPage = ({ video }: { video: IVideoResponse }) => {
 					<div className=''>
 						<h1 className='text-2xl font-semibold mb-2'>{video.title}</h1>
 						<span className='text-sm text-gray-400'>
-							{video.viewsCount.toLocaleString()} показов
+							{video.viewsCount.toLocaleString('RU')} показов
 						</span>
 					</div>
 					<div className='flex items-center gap-5'>
-						<button className='flex gap-2'>
-							<ListPlusIcon />
-							Сохранить
-						</button>
+						<AddToPlaylistButton
+							videoId={video.id}
+							renderAction={() => (
+								<CreatePlaylistButton
+									className='w-full bg-transparent border-none text-white font-normal p-0 hover:bg-transparent'
+									publicVideoId={video.publicId}
+								>
+									<>
+										<PlusIcon size={15} />
+										<span>Новый плейлист</span>
+									</>
+								</CreatePlaylistButton>
+							)}
+						>
+							<button className='flex gap-2'>
+								<ListPlusIcon />
+								Сохранить
+							</button>
+						</AddToPlaylistButton>
 						<LikeButton video={video} />
 					</div>
 				</div>

@@ -11,8 +11,8 @@ interface Props {
 	renderDescription?: () => ReactNode
 	renderContent?: () => ReactNode
 	children?: ReactNode
-	isOpen: boolean
-	onClose: () => void
+	isOpen?: boolean
+	onClose?: () => void
 	className?: string
 	trigger?: ReactNode
 }
@@ -22,6 +22,8 @@ const UiModal = ({
 	renderHeading,
 	renderDescription,
 	renderContent,
+	isOpen,
+	onClose,
 	children,
 	className,
 	trigger,
@@ -29,22 +31,14 @@ const UiModal = ({
 	const { ref: menuRef, isShow, setIsShow } = useOutside<HTMLDivElement>(false)
 
 	useEffect(() => {
-		setIsShow(isShow)
-	}, [isShow])
+		setIsShow(isOpen)
+	}, [isOpen])
 
 	useEffect(() => {
-		if (variant === 'options') {
-			const handleClickOutside = (e: MouseEvent) => {
-				if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-					setIsShow(false)
-				}
-			}
-
-			document.addEventListener('mousedown', handleClickOutside)
-
-			return () => document.removeEventListener('mousedown', handleClickOutside)
+		if (!isShow && isOpen) {
+			onClose()
 		}
-	}, [variant, setIsShow])
+	}, [isShow])
 
 	if (variant === 'options') {
 		return (
@@ -76,12 +70,16 @@ const UiModal = ({
 	if (!isShow) return null
 
 	return (
-		<div className='fixed inset-0 z-50 flex items-center justify-center bg-black/40'>
+		<div
+			className='fixed inset-0 z-50 flex items-center justify-center bg-black/40'
+			onClick={() => setIsShow(false)}
+		>
 			<div
 				className={clsx(
-					'bg-white rounded-lg p-6 w-full max-w-md mx-auto shadow-xl',
+					'bg-neutral-800 rounded-lg p-6 w-full max-w-md mx-auto shadow-xl',
 					className,
 				)}
+				onClick={e => e.stopPropagation()}
 			>
 				{children ?? (
 					<>
