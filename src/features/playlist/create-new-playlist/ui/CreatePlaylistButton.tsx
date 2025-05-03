@@ -1,24 +1,33 @@
-import { FolderPlusIcon } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { PropsWithChildren, useState } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 import UiButton from '@/shared/ui/ui-button'
 import UiModal from '@/shared/ui/ui-modal'
 
 import CreatePlaylistForm from '@/features/playlist/create-new-playlist/ui/CreatePlaylistForm'
 
-const CreatePlaylistButton = () => {
+interface Props {
+	publicVideoId?: string
+	className?: string
+}
+
+const CreatePlaylistButton = ({
+	publicVideoId,
+	children,
+	className,
+}: PropsWithChildren<Props>) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 
 	return (
 		<>
 			<UiButton
 				onClick={() => setIsOpen(true)}
-				className='border text-red-600 border-primary bg-transparent hover:bg-primary hover:text-white px-4 py-2 rounded-lg'
+				className={twMerge(
+					'border text-red-600 border-primary bg-transparent hover:bg-primary hover:text-white px-4 py-2 rounded-lg',
+					className,
+				)}
 			>
-				<div className='flex items-center gap-2'>
-					<FolderPlusIcon size={20} />
-					Новый плейлист
-				</div>
+				{children}
 			</UiButton>
 			<UiModal
 				isOpen={isOpen}
@@ -26,7 +35,9 @@ const CreatePlaylistButton = () => {
 				renderHeading={() => (
 					<h1 className='text-center text-2xl mb-10'>Создание плейлиста</h1>
 				)}
-				renderContent={() => <CreatePlaylistForm />}
+				renderContent={() => (
+					<CreatePlaylistForm publicVideoId={publicVideoId} />
+				)}
 			></UiModal>
 		</>
 	)

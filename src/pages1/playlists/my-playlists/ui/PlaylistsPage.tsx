@@ -1,6 +1,6 @@
 'use client'
 
-import { ListVideoIcon } from 'lucide-react'
+import { FolderPlusIcon, ListVideoIcon } from 'lucide-react'
 import React from 'react'
 
 import UiHeading from '@/shared/ui/ui-heading'
@@ -22,7 +22,12 @@ const PlaylistsPage = () => {
 				<UiHeading Icon={ListVideoIcon} className='text-2xl'>
 					Плейлисты
 				</UiHeading>
-				<CreatePlaylistButton />
+				<CreatePlaylistButton>
+					<div className='flex items-center gap-2'>
+						<FolderPlusIcon size={20} />
+						Новый плейлист
+					</div>
+				</CreatePlaylistButton>
 			</div>
 
 			{isLoading && (

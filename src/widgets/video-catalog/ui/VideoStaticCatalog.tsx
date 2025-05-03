@@ -16,7 +16,7 @@ const VideoStaticCatalog = ({ title, videos, Icon }: Props) => {
 	return (
 		<section className='space-y-7'>
 			{!!title && <UiHeading Icon={Icon}>{title}</UiHeading>}
-			<div className='grid xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-7'>
+			<div className='grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-7'>
 				{!!videos.length &&
 					videos.map(video => (
 						<VideoItem key={video.id} video={video} Icon={FlameIcon} />

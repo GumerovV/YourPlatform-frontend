@@ -21,7 +21,7 @@ export function useToggleVideoPlaylist(videoId: string) {
 			const message = isExists
 				? 'Видео успешно удалено из плейлиста!'
 				: 'Видео успешно добавлено в плейлист!'
-			toast.success(message)
+			toast.success(message, { id: 'playlist' })
 			queryClient.invalidateQueries({ queryKey: ['playlists'] })
 		},
 		onError() {

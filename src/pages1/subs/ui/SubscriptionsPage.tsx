@@ -20,7 +20,7 @@ const SubscriptionsPage = () => {
 
 	if (isLoading)
 		return (
-			<div className='grid xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-7'>
+			<div className='grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-7'>
 				<VideoSkeletonLoader count={25} />
 			</div>
 		)
@@ -28,18 +28,18 @@ const SubscriptionsPage = () => {
 	return (
 		<section>
 			<UiHeading Icon={UsersIcon}>Мои подписки</UiHeading>
-			<div className='grid grid-cols-5 gap-5 mb-7'>
+			<div className='grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-7'>
 				{profile?.subscriptions.length ? (
 					profile?.subscriptions.map(sub => (
 						<div key={sub.id} className='flex items-center gap-2'>
-							<Link href={PAGE.CHANNEL(sub.slug)}>
+							<Link href={PAGE.CHANNEL(sub.slug)} className='flex-shrink-0'>
 								<UiAvatar channel={sub} size={100} />
 							</Link>
 							<div className='space-y-2'>
 								<Link href={PAGE.CHANNEL(sub.slug)}>
-									<span className='text-xl font-semibold'>
+									<div className='text-xl font-semibold'>
 										{sub?.slug ?? sub.user.name}
-									</span>
+									</div>
 								</Link>
 								<SubscribeButton toChannel={sub.slug} />
 							</div>

@@ -1,22 +1,27 @@
-import { CheckIcon, ListPlusIcon } from 'lucide-react'
-import React from 'react'
+import { CheckIcon } from 'lucide-react'
+import React, { PropsWithChildren, ReactNode } from 'react'
 
 import UiModal from '@/shared/ui/ui-modal'
 
 import { useToggleVideoPlaylist } from '@/features/playlist/add-to-playlist/model/useToggleVideoPlaylist'
 
-const AddToPlaylistButton = ({ videoId }: { videoId: string }) => {
+interface Props {
+	videoId: string
+	className?: string
+	renderAction?: () => ReactNode
+}
+
+const AddToPlaylistButton = ({
+	videoId,
+	renderAction,
+	children,
+}: PropsWithChildren<Props>) => {
 	const { playlists, togglePlaylist } = useToggleVideoPlaylist(videoId)
 
 	return (
 		<UiModal
 			variant='options'
-			trigger={
-				<button className='flex gap-2'>
-					<ListPlusIcon />
-					Сохранить
-				</button>
-			}
+			trigger={children}
 			renderContent={() => (
 				<ul className='rounded'>
 					{playlists?.map(playlist => (
@@ -31,6 +36,11 @@ const AddToPlaylistButton = ({ videoId }: { videoId: string }) => {
 							)}
 						</li>
 					))}
+					{renderAction && (
+						<li className='flex items-center px-10 py-1 gap-2 bg-transparent hover:bg-bgHover transition-colors cursor-pointer'>
+							{renderAction()}
+						</li>
+					)}
 				</ul>
 			)}
 		/>

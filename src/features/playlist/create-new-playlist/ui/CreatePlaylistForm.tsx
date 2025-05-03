@@ -8,13 +8,16 @@ import { IPlaylistDto } from '@/entities/playlist/model/playlist-dto.types'
 
 import { useCreatePlaylist } from '@/features/playlist/create-new-playlist/model/useCreatePlaylist'
 
-const CreatePlaylistForm = () => {
+const CreatePlaylistForm = ({ publicVideoId }: { publicVideoId?: string }) => {
 	const {
 		register,
 		reset,
 		formState: { errors },
 		handleSubmit,
-	} = useForm<IPlaylistDto>({ mode: 'onChange' })
+	} = useForm<IPlaylistDto>({
+		mode: 'onChange',
+		defaultValues: { videoPublicId: publicVideoId },
+	})
 
 	const { createPlaylist, isLoading } = useCreatePlaylist(reset)
 

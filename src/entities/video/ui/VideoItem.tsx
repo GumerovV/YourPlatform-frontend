@@ -33,11 +33,11 @@ const VideoItem = ({ video, Icon }: IVideoItem) => {
 						<UiAvatar channel={video.channel} />
 					</Link>
 				</div>
-				<div className='w-full flex justify-between'>
+				<div className='relative w-full flex justify-between'>
 					<div>
 						<Link
 							href={PAGE.VIDEO(video.publicId)}
-							className='line-clamp-2 leading-snug'
+							className='w-10/12 2xl:w-full line-clamp-2 leading-snug'
 						>
 							<h3>{video.title}</h3>{' '}
 						</Link>
@@ -54,7 +54,7 @@ const VideoItem = ({ video, Icon }: IVideoItem) => {
 							{Icon && <Icon size={15} className='text-red-700' />}
 						</div>
 					</div>
-					<div className='ml-5 relative text-white/50'>
+					<div className='text-white/50'>
 						<EllipsisVerticalIcon className='absolute top-0 -right-1 p-0.5 rounded-full hover:bg-bgHover cursor-pointer' />
 					</div>
 				</div>
