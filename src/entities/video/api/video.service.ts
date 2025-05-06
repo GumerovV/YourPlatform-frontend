@@ -39,7 +39,7 @@ class VideoService {
 		const response = await axiosClassic.get<IVideo[]>(
 			`${this._VIDEOS}/trending`,
 		)
-		return response.data.slice(0, 4)
+		return response.data.slice(0, 5)
 	}
 
 	async getVideoGames() {

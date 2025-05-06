@@ -37,7 +37,7 @@ const VideoItem = ({ video, Icon }: IVideoItem) => {
 					<div>
 						<Link
 							href={PAGE.VIDEO(video.publicId)}
-							className='w-10/12 2xl:w-full line-clamp-2 leading-snug'
+							className='w-10/12 2xl:w-11/12 line-clamp-2 leading-snug'
 						>
 							<h3>{video.title}</h3>{' '}
 						</Link>
