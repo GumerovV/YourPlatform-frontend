@@ -18,7 +18,7 @@ const MainLayout: FC<PropsWithChildren> = ({ children }) => {
 		<main className={styles.layout}>
 			<Sidebar />
 			<Header />
-			<section className='p-layout'>{children}</section>
+			<section className='relative p-layout'>{children}</section>
 		</main>
 	)
 }

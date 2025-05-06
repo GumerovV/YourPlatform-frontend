@@ -17,6 +17,13 @@ class FileService {
 
 		return response.data
 	}
+
+	async getProcessingStatus(fileName: string) {
+		const response = await axiosAuth.get<number>(
+			`/upload-file/status/${fileName}`,
+		)
+		return response.data
+	}
 }
 
 export const fileService = new FileService()

@@ -31,11 +31,11 @@ const UiModal = ({
 	const { ref: menuRef, isShow, setIsShow } = useOutside<HTMLDivElement>(false)
 
 	useEffect(() => {
-		setIsShow(isOpen)
+		if (isOpen) setIsShow(isOpen)
 	}, [isOpen])
 
 	useEffect(() => {
-		if (!isShow && isOpen) {
+		if (!isShow && isOpen && onClose) {
 			onClose()
 		}
 	}, [isShow])

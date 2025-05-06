@@ -7,6 +7,7 @@ import type {
 
 class VideoService {
 	private _VIDEOS = '/videos'
+	private _STUDIO_VIDEOS = '/studio/videos'
 
 	async getAll(searchTerm?: string) {
 		const response = await axiosClassic.get<IVideosResponse>(
