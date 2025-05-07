@@ -42,7 +42,7 @@ const UiModal = ({
 
 	if (variant === 'options') {
 		return (
-			<div className='relative inline-block' ref={menuRef}>
+			<div className='flex-shrink-0 relative inline-block' ref={menuRef}>
 				{trigger && (
 					<div onClick={() => setIsShow(prev => !prev)}>{trigger}</div>
 				)}

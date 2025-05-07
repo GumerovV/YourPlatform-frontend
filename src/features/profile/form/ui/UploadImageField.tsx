@@ -29,7 +29,7 @@ const UploadImageField = ({
 
 	return (
 		<div className='mb-10'>
-			<UiUploadField onChange={uploadFile} {...rest} />
+			<UiUploadField onChange={uploadFile} accept='image/*' {...rest} />
 			<div>
 				{isLoading ? (
 					<UiSkeletonLoader classNames='h-30 w-40' />

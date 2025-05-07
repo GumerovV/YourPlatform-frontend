@@ -40,7 +40,7 @@ const VideoPlayer = ({
 		<div className='relative group mx-auto overflow-hidden rounded-lg cursor-pointer'>
 			<video
 				ref={playerRef}
-				src={`${SITE_URL}/uploads/videos/${EnumVideoQuality['R1080p']}/${videoFileName}`}
+				src={`${SITE_URL}/uploads/videos/${maxResolution}/${videoFileName}`}
 				preload='metadata'
 				controls={false}
 				onClick={() => actions.togglePlay()}

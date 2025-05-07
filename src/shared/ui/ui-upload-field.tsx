@@ -27,13 +27,7 @@ const UiUploadField = ({ label, error, className, ...rest }: IUploadField) => {
 				<UploadCloudIcon className='mr-2' />
 				Загрузить файл
 			</label>
-			<input
-				id={inputId}
-				type='file'
-				accept='image/*'
-				className='hidden'
-				{...rest}
-			/>
+			<input id={inputId} type='file' className='hidden' {...rest} />
 			{error && <p className='mt-1 text-sm text-red-500'>{error}</p>}
 		</div>
 	)
