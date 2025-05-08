@@ -86,6 +86,7 @@ const EditSettingsForm = () => {
 						render={({ field: { value, onChange }, fieldState: { error } }) => (
 							<UploadImageField
 								label='Баннер канала:'
+								folder='banners'
 								aspectRatio='16:9'
 								value={value}
 								onChangeFile={onChange}

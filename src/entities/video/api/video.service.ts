@@ -28,9 +28,10 @@ class VideoService {
 		return response.data
 	}
 
-	async getExploreVideos() {
+	async getExploreVideos(userId?: string) {
 		const response = await axiosClassic.get<IVideosResponse>(
 			`${this._VIDEOS}/explore`,
+			{ params: { userId: userId || undefined } },
 		)
 		return response.data
 	}

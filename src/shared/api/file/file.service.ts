@@ -1,10 +1,11 @@
 import { axiosAuth } from '@/shared/api/axios-instance'
+import { IFileResponse, IFileUploadStatus } from '@/shared/types/file.types'
 
 class FileService {
 	private MEDIA = '/media'
 
 	async upload(file: FormData, folder?: string) {
-		const response = await axiosAuth.post<{ url: string; name: string }[]>(
+		const response = await axiosAuth.post<IFileResponse[]>(
 			`/upload-file`,
 			file,
 			{
@@ -19,7 +20,7 @@ class FileService {
 	}
 
 	async getProcessingStatus(fileName: string) {
-		const response = await axiosAuth.get<number>(
+		const response = await axiosAuth.get<IFileUploadStatus>(
 			`/upload-file/status/${fileName}`,
 		)
 		return response.data

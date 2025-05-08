@@ -16,7 +16,12 @@ interface Props {
 export function useHotKeysVideoPlayer({ volume, ...fn }: Props) {
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
-			if (e.code === 'Space' || e.key === ' ') {
+			const target = e.target as HTMLElement
+			const isInputField =
+				target.tagName === 'INPUT' ||
+				target.tagName === 'TEXTAREA' ||
+				target.isContentEditable
+			if (!isInputField && (e.code === 'Space' || e.key === ' ')) {
 				e.preventDefault()
 				fn.togglePlay()
 			}

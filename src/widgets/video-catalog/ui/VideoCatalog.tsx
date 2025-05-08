@@ -20,18 +20,20 @@ interface Props {
 	queryFn?: () => Promise<IVideo | IVideosResponse>
 	renderItem?: (item: IVideo, icon?: LucideIcon) => React.ReactNode
 	loaderCount?: number
+	userId?: string
 }
 
 const VideoCatalog = ({
+	userId,
 	title,
 	Icon,
-	queryFn = () => videoService.getExploreVideos(),
+	queryFn = () => videoService.getExploreVideos(userId),
 	queryKey = ['explore'],
 	renderItem = video => <VideoItem key={video.id} video={video} />,
 	loaderCount = 20,
 }: Props) => {
 	const { data, isLoading } = useQuery({
-		queryKey,
+		queryKey: [...queryKey, userId],
 		queryFn,
 	})
 
