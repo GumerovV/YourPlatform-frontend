@@ -8,8 +8,8 @@ import UiFileUploader from '@/shared/ui/ui-file-uploader'
 import UiTagsField from '@/shared/ui/ui-tags-field'
 import UiTextarea from '@/shared/ui/ui-textarea'
 
-import UploadImageField from '@/features/profile/form/ui/UploadImageField'
 import { useUploadVideoForm } from '@/features/video/upload-video-form/model/useUploadVideoForm'
+import VideoThumbnailUploader from '@/features/video/upload-video-form/ui/VideoThumbnailUploader'
 
 import UploadVideoProgress from './UploadVideoProgress'
 
@@ -88,12 +88,11 @@ const UploadVideoForm = () => {
 									field: { value, onChange },
 									fieldState: { error },
 								}) => (
-									<UploadImageField
+									<VideoThumbnailUploader
 										label='Обложка видео:'
-										folder='thumbnails'
-										aspectRatio='16:9'
 										value={value}
 										onChangeFile={onChange}
+										videoFileName={form.watch('videoFileName')}
 										error={error?.message}
 									/>
 								)}
