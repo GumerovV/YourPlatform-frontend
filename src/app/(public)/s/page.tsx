@@ -9,11 +9,11 @@ type Props = {
 }
 
 export async function generateMetadata({
-	params,
+	searchParams,
 }: {
-	params: Promise<Props>
+	searchParams: Promise<Props>
 }): Promise<Metadata> {
-	const { searchTerm } = await params
+	const { searchTerm } = await searchParams
 	return {
 		title: `${searchTerm}`,
 		...NO_INDEX_PAGE,
@@ -21,7 +21,7 @@ export async function generateMetadata({
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const SPage = async ({ params }: { params: Promise<Props> }) => {
+const SPage = async ({ searchParams }: { searchParams: Promise<Props> }) => {
 	return <SearchPage />
 }
 
