@@ -1,4 +1,5 @@
 import { axiosClassic } from '@/shared/api/axios-instance'
+import { IPaginationParams } from '@/shared/types/pagination.types'
 import type {
 	IVideo,
 	IVideoResponse,
@@ -9,12 +10,12 @@ class VideoService {
 	private _VIDEOS = '/videos'
 	private _STUDIO_VIDEOS = '/studio/videos'
 
-	async getAll(searchTerm?: string) {
+	async getAll(searchTerm?: string, params?: IPaginationParams) {
 		const response = await axiosClassic.get<IVideosResponse>(
 			`${this._VIDEOS}`,
 			searchTerm
 				? {
-						params: { searchTerm },
+						params: { searchTerm, ...params },
 					}
 				: {},
 		)
@@ -28,10 +29,21 @@ class VideoService {
 		return response.data
 	}
 
-	async getExploreVideos(userId?: string) {
+	async getExploreVideos(
+		userId?: string,
+		params?: IPaginationParams,
+		excludedIds?: string[],
+	) {
+		const excludedIdsString = excludedIds?.join(',') || ''
 		const response = await axiosClassic.get<IVideosResponse>(
 			`${this._VIDEOS}/explore`,
-			{ params: { userId: userId || undefined } },
+			{
+				params: {
+					userId: userId || undefined,
+					excludeIds: excludedIdsString,
+					...params,
+				},
+			},
 		)
 		return response.data
 	}
