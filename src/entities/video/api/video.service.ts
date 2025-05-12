@@ -22,6 +22,14 @@ class VideoService {
 		return response.data
 	}
 
+	async getVideosByChannel(channelId: string, params?: IPaginationParams) {
+		const response = await axiosClassic.get<IVideosResponse>(
+			`${this._VIDEOS}/by-channel/${channelId}`,
+			{ params: { ...params } },
+		)
+		return response.data
+	}
+
 	async getByPublicId(id: string) {
 		const response = await axiosClassic.get<IVideoResponse>(
 			`${this._VIDEOS}/by-publicId/${id}`,

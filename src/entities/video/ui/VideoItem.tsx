@@ -39,7 +39,7 @@ const VideoItem = ({ video, Icon }: IVideoItem) => {
 							href={PAGE.VIDEO(video.publicId)}
 							className='w-10/12 2xl:w-11/12 line-clamp-2 leading-snug'
 						>
-							<h3>{video.title}</h3>{' '}
+							<h3 title={video.title}>{video.title}</h3>{' '}
 						</Link>
 						<div className='flex items-center text-sm text-white/50 space-x-1'>
 							<UiTooltip text={video.channel.slug} position='top'>

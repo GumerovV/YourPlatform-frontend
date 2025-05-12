@@ -1,18 +1,19 @@
 import { axiosAuth } from '@/shared/api/axios-instance'
+import { IPaginationParams } from '@/shared/types/pagination.types'
 import { IVideoDto } from '@/shared/types/upload-video.types'
 import type { IVideo, IVideosResponse } from '@/shared/types/video.types'
 
 class StudioVideoService {
 	private _VIDEOS = '/studio/videos'
 
-	async getAll(searchTerm?: string, page?: number, limit?: number) {
+	async getAll(searchTerm?: string, params?: IPaginationParams) {
 		const response = await axiosAuth.get<IVideosResponse>(
 			`${this._VIDEOS}`,
 			searchTerm
 				? {
-						params: { searchTerm, page, limit },
+						params: { searchTerm, ...params },
 					}
-				: {},
+				: { params: { ...params } },
 		)
 		return response.data
 	}

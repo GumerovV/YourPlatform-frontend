@@ -21,6 +21,10 @@ export interface IVideo extends IBase {
 	viewsCount: number
 	isPublic: boolean
 	maxResolution: EnumVideoQuality
+	tags?: {
+		id: string
+		name: string
+	}[]
 	channel: IChannel
 	likes: []
 	comments?: IComment[]

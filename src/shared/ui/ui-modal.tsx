@@ -2,6 +2,7 @@
 
 import clsx from 'clsx'
 import React, { ReactNode, useEffect } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 import { useOutside } from '@/shared/lib/hooks/useOutside'
 
@@ -75,7 +76,7 @@ const UiModal = ({
 			onClick={() => setIsShow(false)}
 		>
 			<div
-				className={clsx(
+				className={twMerge(
 					'bg-neutral-800 rounded-lg p-6 w-full max-w-md mx-auto shadow-xl',
 					className,
 				)}
