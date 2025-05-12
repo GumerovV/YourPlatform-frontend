@@ -1,5 +1,5 @@
 .sidebar {
-  @apply p-layout border-r border-border;
+  @apply pt-0 p-layout border-r border-border;
 }
 
 .title {
@@ -7,11 +7,11 @@
 }
 
 .item_link {
-  @apply flex items-center gap-5 py-2 px-2 hover:bg-bgHover rounded-lg transition-colors duration-0;
+  @apply flex items-center gap-5 py-2 px-2 hover:bg-bgHover rounded-lg truncate transition-colors duration-0;
 }
 
 .item_info {
-  @apply flex items-center gap-5;
+  @apply flex items-center gap-5 truncate;
 }
 
 .item_active {

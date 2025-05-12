@@ -4,7 +4,11 @@ import { usePathname } from 'next/navigation'
 import { match } from 'path-to-regexp'
 import React from 'react'
 
+import { PAGE } from '@/shared/constants/routes'
 import { STUDIO_PAGE } from '@/shared/constants/studio-routes'
+import { useTypeSelector } from '@/shared/lib/hooks/redux'
+
+import { useProfile } from '@/entities/user/model/useProfile'
 
 import SidebarHeader from './SidebarHeader'
 import MenuItem from './menus/MenuItem'
@@ -22,8 +26,26 @@ import styles from './Sidebar.module.scss'
 const Sidebar = () => {
 	const pathname = usePathname() || ''
 
+	const sidebarIsOpen = useTypeSelector(state => state.sidebar.isOpen)
+
+	const { profile } = useProfile()
+
+	const subscriptionItems: ISubItem[] =
+		profile?.subscriptions?.map(sub => ({
+			avatar: sub.avatarUrl,
+			label: sub.slug,
+			link: PAGE.CHANNEL(sub.slug),
+			isRecentUpload: false,
+		})) || []
+
 	return (
-		<aside className={styles.sidebar}>
+		<aside
+			className={styles.sidebar}
+			style={{
+				maxWidth: sidebarIsOpen ? '250px' : '100px',
+				minWidth: sidebarIsOpen ? '240px' : '100px',
+			}}
+		>
 			<SidebarHeader />
 			<SidebarMenu
 				menu={SIDEBAR_DATA}
@@ -50,16 +72,19 @@ const Sidebar = () => {
 				/>
 			)}
 
-			<SidebarMenu
-				menu={[{ avatar: '/file.svg', label: 'Google', link: '/sub' }]}
-				itemRender={(item: ISubItem) => (
-					<SubItem
-						key={item.link}
-						item={item}
-						isActive={!!match(item.link)(pathname)}
-					/>
-				)}
-			/>
+			{profile && (
+				<SidebarMenu
+					title='Подписки'
+					menu={subscriptionItems}
+					itemRender={(item: ISubItem) => (
+						<SubItem
+							key={item.link}
+							item={item}
+							isActive={!!match(item.link)(pathname)}
+						/>
+					)}
+				/>
+			)}
 
 			<SidebarMenu
 				title='Подробнее'

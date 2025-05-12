@@ -47,7 +47,7 @@ export const SIDEBAR_DATA: ISidebarItem[] = [
 	},
 	{
 		icon: ListVideoIcon,
-		label: 'Плейлитсы',
+		label: 'Плейлисты',
 		link: PAGE.PLAYLISTS(),
 	},
 	{

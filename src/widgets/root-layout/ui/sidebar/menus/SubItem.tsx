@@ -4,6 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+import { useTypeSelector } from '@/shared/lib/hooks/redux'
+
 import { ISubItem } from '@/widgets/root-layout/ui/sidebar/sidebar.types'
 
 import styles from '../Sidebar.module.scss'
@@ -14,23 +16,34 @@ interface Props {
 }
 
 const SubItem = ({ item, isActive }: Props) => {
+	const sidebarIsOpen = useTypeSelector(state => state.sidebar.isOpen)
+
 	return (
-		<li>
+		<li className='min-w-0 last:pb-5 last:mb-5 last:border-b border-border'>
 			<Link
 				href={item.link}
 				className={clsx(styles.item_link, {
 					[styles.item_active]: isActive,
+					'justify-center': !sidebarIsOpen,
 				})}
 			>
 				{item.avatar && (
-					<Image src={item.avatar} alt={item.label} width={25} height={25} />
+					<Image
+						src={item.avatar}
+						alt={item.label}
+						width={30}
+						height={30}
+						className='rounded-full'
+					/>
 				)}
-				<span>
-					<span className={styles.item_info}>
-						{item.label}
-						{item.isRecentUpload && <Dot />}
+				{sidebarIsOpen && (
+					<span className='min-w-0 flex-1 overflow-hidden'>
+						<span className={styles.item_info} title={item.label}>
+							<span className='truncate block w-full'>{item.label}</span>
+							{item.isRecentUpload && <Dot className='flex-shrink-0' />}
+						</span>
 					</span>
-				</span>
+				)}
 			</Link>
 		</li>
 	)

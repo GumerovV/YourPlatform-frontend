@@ -10,6 +10,9 @@
   aside {
     grid-area: sidebar;
     height: 100vh;
+    min-width: 240px;
+    max-width: 250px;
+    overflow: scroll;
     position: sticky;
     top: 0;
   }

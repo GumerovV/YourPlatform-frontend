@@ -12,7 +12,10 @@ export async function middleware(req: NextRequest) {
 
 	if (
 		pathname.includes(STUDIO_PAGE.HOME) ||
-		pathname.includes(PAGE.SUBSCRIPTIONS)
+		pathname.includes(PAGE.SUBSCRIPTIONS) ||
+		pathname.includes(PAGE.HISTORY) ||
+		pathname.includes(PAGE.LIKED_VIDEOS) ||
+		pathname.includes('/playlists')
 	) {
 		return protectStudioMiddleware(req)
 	}
@@ -23,5 +26,12 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-	matcher: ['/studio/:path*', '/auth/:path*', '/subscriptions:path*'],
+	matcher: [
+		'/studio/:path*',
+		'/auth/:path*',
+		'/subscriptions:path*',
+		'/liked-videos:path*',
+		'/history:path*',
+		'/playlists:path*',
+	],
 }
