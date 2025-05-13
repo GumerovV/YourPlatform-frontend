@@ -37,3 +37,22 @@ body {
   border-radius: 50%;
   cursor: pointer;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}

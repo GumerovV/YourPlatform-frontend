@@ -10,11 +10,11 @@ export function useDeleteVideo(videoId: string) {
 		mutationKey: ['delete-video', videoId],
 		mutationFn: () => studioVideoService.delete(videoId),
 		onSuccess() {
-			toast.success('Видео успешно удалено')
+			toast.success('Видео успешно удалено', { position: 'top-center' })
 			queryClient.invalidateQueries({ queryKey: ['studio-videos'] })
 		},
 		onError() {
-			toast.error('Ошибка при удалении видео!')
+			toast.error('Ошибка при удалении видео!', { position: 'top-center' })
 		},
 	})
 

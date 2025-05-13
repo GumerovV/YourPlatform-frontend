@@ -7,7 +7,7 @@
 }
 
 .item_link {
-  @apply flex items-center gap-5 py-2 px-2 hover:bg-bgHover rounded-lg truncate transition-colors duration-0;
+  @apply flex items-center py-2 px-2 hover:bg-bgHover rounded-lg truncate transition-colors duration-0;
 }
 
 .item_info {

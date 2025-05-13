@@ -12,7 +12,7 @@ import styles from '../Sidebar.module.scss'
 
 interface Props {
 	item: ISubItem
-	isActive: boolean
+	isActive?: boolean
 }
 
 const SubItem = ({ item, isActive }: Props) => {
@@ -22,7 +22,7 @@ const SubItem = ({ item, isActive }: Props) => {
 		<li className='min-w-0 last:pb-5 last:mb-5 last:border-b border-border'>
 			<Link
 				href={item.link}
-				className={clsx(styles.item_link, {
+				className={clsx(styles.item_link, 'gap-5', {
 					[styles.item_active]: isActive,
 					'justify-center': !sidebarIsOpen,
 				})}

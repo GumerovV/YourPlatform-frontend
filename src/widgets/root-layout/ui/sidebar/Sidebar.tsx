@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import { match } from 'path-to-regexp'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { PAGE } from '@/shared/constants/routes'
 import { STUDIO_PAGE } from '@/shared/constants/studio-routes'
@@ -27,23 +27,29 @@ const Sidebar = () => {
 	const pathname = usePathname() || ''
 
 	const sidebarIsOpen = useTypeSelector(state => state.sidebar.isOpen)
+	const isAuth = useTypeSelector(state => state.auth.isAuth)
 
 	const { profile } = useProfile()
 
-	const subscriptionItems: ISubItem[] =
-		profile?.subscriptions?.map(sub => ({
-			avatar: sub.avatarUrl,
-			label: sub.slug,
-			link: PAGE.CHANNEL(sub.slug),
-			isRecentUpload: false,
-		})) || []
+	const subscriptionItems: ISubItem[] = useMemo(() => {
+		if (!isAuth) return []
+
+		return (
+			profile?.subscriptions?.map(sub => ({
+				avatar: sub.avatarUrl,
+				label: sub.slug,
+				link: PAGE.CHANNEL(sub.slug),
+				isRecentUpload: false,
+			})) || []
+		)
+	}, [profile?.subscriptions, isAuth])
 
 	return (
 		<aside
 			className={styles.sidebar}
 			style={{
 				maxWidth: sidebarIsOpen ? '250px' : '100px',
-				minWidth: sidebarIsOpen ? '240px' : '100px',
+				minWidth: sidebarIsOpen ? '250px' : '100px',
 			}}
 		>
 			<SidebarHeader />
@@ -72,16 +78,12 @@ const Sidebar = () => {
 				/>
 			)}
 
-			{profile && (
+			{profile && !!subscriptionItems.length && (
 				<SidebarMenu
 					title='Подписки'
 					menu={subscriptionItems}
 					itemRender={(item: ISubItem) => (
-						<SubItem
-							key={item.link}
-							item={item}
-							isActive={!!match(item.link)(pathname)}
-						/>
+						<SubItem key={item.link} item={item} />
 					)}
 				/>
 			)}

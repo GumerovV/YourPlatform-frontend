@@ -14,7 +14,7 @@ interface Props {
 const StudioVideoItem = ({ video, actions }: Props) => {
 	return (
 		<>
-			<div className='min-w-[168px] aspect-video relative'>
+			<div className='min-w-[168px] max-h-[100px] aspect-video relative'>
 				<Link href={PAGE.VIDEO(video.publicId)}>
 					<Image
 						src={video.thumbnailUrl}

@@ -12,6 +12,8 @@ import { useGetChannelVideos } from '@/entities/video/lib/useChannelVideos'
 import { DeleteVideoButton } from '@/features/studio-video/button'
 import { EditVideoForm } from '@/features/video/upload-video-form'
 
+import VideoSkeletonLoader from '@/widgets/video-catalog/ui/VideoSkeletonLoader'
+
 const StudioVideoList = () => {
 	const { videos, isLoading, isFetchingNextPage, hasNextPage, fetchNextPage } =
 		useGetChannelVideos()
@@ -24,10 +26,15 @@ const StudioVideoList = () => {
 			fetchNextPage={fetchNextPage}
 			hasNextPage={hasNextPage}
 			renderLoaderComponent={() => (
-				<UiSkeletonLoader classNames='w-full h-24' />
+				<VideoSkeletonLoader
+					count={20}
+					renderItem={key => (
+						<UiSkeletonLoader key={key} classNames='w-full h-24 mb-5' />
+					)}
+				/>
 			)}
 		>
-			<div className='grid grid-cols-[2fr_3fr_1fr_1fr_1fr_1fr_0.4fr] gap-5 text-sm text-gray-400'>
+			<div className='grid grid-cols-[2fr_auto_1fr_1fr_1fr_1fr_0.4fr] gap-5 text-sm text-gray-400'>
 				{videos.map(video => (
 					<StudioVideoItem
 						key={video.publicId}

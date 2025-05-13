@@ -33,10 +33,10 @@ const MenuItem = ({
 			<Link
 				href={link}
 				className={twMerge(
-					clsx(styles.item_link, 'group', {
+					clsx(styles.item_link, 'group gap-5', {
 						[styles.item_active]: isActive,
-						'flex-col justify-center text-[0.5rem] gap-0': !sidebarIsOpen,
 					}),
+					!sidebarIsOpen && 'flex-col justify-center text-[0.7rem] gap-1',
 				)}
 				title={item.label}
 			>
